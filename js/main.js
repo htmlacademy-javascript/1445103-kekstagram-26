@@ -26,3 +26,4 @@ getRandomDiceNumber (7, 12);
 
 
 //https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+//https://www.w3schools.com/js/js_random.asp
