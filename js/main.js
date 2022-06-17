@@ -13,15 +13,13 @@ checkLength ('Hello', 15);
 //Функция, возвращающая случайное целое число из переданного диапазона
 
 const getRandomDiceNumber = (min, max) => {
+  if (min < 0 || max < 0) {
+    return -1;
+  }
   if (min > max) {
     [min, max] = [max, min];
   }
-
-  if (min >= 0 || max >= 0) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  } else {
-    return false;
-  }
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 getRandomDiceNumber (7, 12);
