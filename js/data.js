@@ -1,5 +1,5 @@
-import { getRandomDiceNumber, choose, getCommentNumberMargin } from './utils';
-import * as consts from './utils';
+import { getRandomDiceNumber, choose, getCommentNumberMargin } from './utils.js';
+import * as consts from './utils.js';
 
 export function generateComment(i) {
   return {
