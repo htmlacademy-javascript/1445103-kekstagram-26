@@ -1,3 +1,3 @@
-import {generatePostArray} from './posts/generatePostArray';
+import {generatePostArray} from './data';
 
 generatePostArray();
