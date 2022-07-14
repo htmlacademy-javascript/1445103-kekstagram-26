@@ -1,4 +1,3 @@
-
 // Функция проверки длины введённого комментария
 
 export const checkLength = (line, maxLength) => {
