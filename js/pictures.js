@@ -1,4 +1,5 @@
 import { getRandomDiceNumber } from './utils.js';
+import { showBigPicture } from './big-picture.js';
 
 //Функция, которая создает картинки на странице
 export function photoDrawer(numOfImages) {
@@ -12,6 +13,7 @@ export function photoDrawer(numOfImages) {
     picInfo.children[0].textContent = getRandomDiceNumber(0, 100);
     picInfo.children[1].textContent = getRandomDiceNumber(0, 100);
     link.src = `photos/${i+1}.jpg`;
+    element.addEventListener('click', showBigPicture(element));
     pictures.appendChild(element);
   }
 }
