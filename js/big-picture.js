@@ -8,10 +8,8 @@ export function showBigPicture(picture) {
   const bigPictureLikes = bigPicture.querySelector('.social__likes');
   const bigPictureComments = bigPicture.querySelector('.social__comments');
   const bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
-  //const bigPictureCommentsCounter = bigPicture.querySelector('.social__comment-count');
   bigPicture.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
-  //bigPictureCommentsCounter.classList.add('hidden');
   bigPicture.querySelector('.social__comment-count').classList.add('hidden');
   bigPicture.querySelector('.comments-loader').classList.add('hidden');
   bigPictureClose.addEventListener('click', () => {closeBigPicture(bigPicture);});
