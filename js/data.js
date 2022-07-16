@@ -43,3 +43,22 @@ export function generatePostArray() {
   return objectArray;
 }
 
+export function generateCommentMarkup(commentData) {  // commentData - объект который создается через generateComment
+  const commentMarkup = document.createElement('li'); // создаем корень коммента
+  commentMarkup.classList.add('social__comment');
+  commentMarkup.id = commentData.id;
+  const commentImage = document.createElement('img');
+  commentImage.classList.add('social__picture');
+  commentImage.src = commentData.avatar;
+  commentImage.alt = commentData.name;
+  commentImage.width = 35;
+  commentImage.height = 35;
+  commentMarkup.appendChild(commentImage);
+
+  const commentText = document.createElement('p');
+  commentText.classList.add('social__text');
+  commentText.textContent = commentData.message;
+  commentMarkup.appendChild(commentText);
+  return commentMarkup;
+}
+
