@@ -8,8 +8,12 @@ export function showBigPicture(picture) {
   const bigPictureLikes = bigPicture.querySelector('.social__likes');
   const bigPictureComments = bigPicture.querySelector('.social__comments');
   const bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
+  //const bigPictureCommentsCounter = bigPicture.querySelector('.social__comment-count');
   bigPicture.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
+  //bigPictureCommentsCounter.classList.add('hidden');
+  bigPicture.querySelector('.social__comment-count').classList.add('hidden');
+  bigPicture.querySelector('.comments-loader').classList.add('hidden');
   bigPictureClose.addEventListener('click', () => {closeBigPicture(bigPicture);});
   document.addEventListener('keydown', (event) => {if (isEscapeKey(event)) {
     event.preventDefault();
@@ -19,11 +23,11 @@ export function showBigPicture(picture) {
   bigPictureLikes.textContent = picture.querySelector('.picture__info').children[1].textContent;
   bigPictureComments.textContent = picture.querySelector('.picture__info').children[0].textContent;
 
-  // добавление комментов
+  //Добавление комментов
   const commentsContainer = bigPicture.querySelector('.social__comments');
   const commentsFragment = document.createDocumentFragment();
   let comment = '';
-  for (let i = 1; i < 5; i++){  // цикл добавляющий комменты
+  for (let i = 1; i < 5; i++){  //Цикл, добавляющий комменты
     comment = generateCommentMarkup(generateComment(i));
     commentsFragment.appendChild(comment);
   }
