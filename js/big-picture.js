@@ -1,4 +1,6 @@
+import { DESCRIPTIONS } from './constants.js';
 import {generateComment, generateCommentMarkup} from './data.js';
+import { choose } from './utils.js';
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
@@ -20,6 +22,7 @@ export function showBigPicture(picture) {
   pictureImg.children[0].src = picture.children[0].src;
   bigPictureLikes.textContent = picture.querySelector('.picture__info').children[1].textContent;
   bigPictureComments.textContent = picture.querySelector('.picture__info').children[0].textContent;
+  bigPicture.querySelector('.social__caption').textContent = choose(DESCRIPTIONS);
 
   //Добавление комментов
   const commentsContainer = bigPicture.querySelector('.social__comments');

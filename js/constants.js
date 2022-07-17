@@ -16,5 +16,10 @@ export const NAMES = [
   'Anna',
 ];
 
+export const DESCRIPTIONS = [
+  'Вот мое фото!',
+  'Это не мое фото',
+];
+
 export const AVATAR_NUMBER_START = 1;
 export const AVATAR_NUMBER_END = 6;
