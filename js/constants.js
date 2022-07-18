@@ -19,6 +19,7 @@ export const NAMES = [
 export const DESCRIPTIONS = [
   'Вот мое фото!',
   'Это не мое фото',
+  'Тестим новую камеру! =)',
 ];
 
 export const AVATAR_NUMBER_START = 1;

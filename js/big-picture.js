@@ -1,15 +1,19 @@
 import { DESCRIPTIONS } from './constants.js';
 import {generateComment, generateCommentMarkup} from './data.js';
-import { choose } from './utils.js';
+import { choose, getRandomDiceNumber } from './utils.js';
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
+const bigPicture = document.querySelector('.big-picture');
+const pictureImg = bigPicture.querySelector('.big-picture__img');
+const bigPictureLikes = bigPicture.querySelector('.social__likes');
+const bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
+
+//Переменные для добавления комментариев
+const commentsContainer = bigPicture.querySelector('.social__comments');
+const commentsFragment = document.createDocumentFragment();
+
 export function showBigPicture(picture) {
-  const bigPicture = document.querySelector('.big-picture');
-  const pictureImg = bigPicture.querySelector('.big-picture__img');
-  const bigPictureLikes = bigPicture.querySelector('.social__likes');
-  const bigPictureComments = bigPicture.querySelector('.social__comments');
-  const bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
   bigPicture.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
   bigPicture.querySelector('.social__comment-count').classList.add('hidden');
@@ -21,12 +25,10 @@ export function showBigPicture(picture) {
   }});
   pictureImg.children[0].src = picture.children[0].src;
   bigPictureLikes.textContent = picture.querySelector('.picture__info').children[1].textContent;
-  bigPictureComments.textContent = picture.querySelector('.picture__info').children[0].textContent;
   bigPicture.querySelector('.social__caption').textContent = choose(DESCRIPTIONS);
+  bigPicture.querySelector('.social__likes').innerHTML = `Нравится <span class="likes-count">${getRandomDiceNumber(100, 300)}</span>`;
 
   //Добавление комментов
-  const commentsContainer = bigPicture.querySelector('.social__comments');
-  const commentsFragment = document.createDocumentFragment();
   let comment = '';
   for (let i = 1; i < 5; i++){  //Цикл, добавляющий комменты
     comment = generateCommentMarkup(generateComment(i));
@@ -35,7 +37,7 @@ export function showBigPicture(picture) {
   commentsContainer.appendChild(commentsFragment);
 }
 
-function closeBigPicture(bigPicture) {
-  bigPicture.classList.add('hidden');
+function closeBigPicture(image) {
+  image.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
 }
