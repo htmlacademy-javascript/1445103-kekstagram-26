@@ -1,5 +1,14 @@
-import './utils.js';
-import {generatePost} from './data.js';
-import './pictures.js';
+import {renderUserPhotos} from './pictures.js';
+import {initEffects} from './effects.js';
+import {closeUploadPopup} from './form.js';
+import {submitForm} from './form.js';
+import {getData} from './api.js';
+import {showFilteredPictures} from './filter.js';
 
-generatePost();
+getData((pictures) => {
+  renderUserPhotos(pictures);
+  showFilteredPictures(pictures);
+});
+
+submitForm(closeUploadPopup);
+initEffects();
