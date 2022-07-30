@@ -42,6 +42,7 @@ const showMessageError = () => {
       sectionError.remove();
     }
   });
+  document.addEventListener('click', () => sectionError.remove());
   sectionError.addEventListener(('click'), (evt) => {
     if (evt.target === buttonError) {
       sectionError.remove();
