@@ -31,19 +31,18 @@ const checkCommentsLength = (value) => value.length <= MAX_STRING_LENGTH;
 
 const getHashtags = (string) => string.split(' ').filter((item) => item !== '');
 
-const getUniqueHashtags = (string) => {
-  const hashtags = getHashtags(string);
-  const uniqueHashtags = new Set(hashtags);
-  return hashtags.length === uniqueHashtags.size;
-};
-
-const checkQuantity = (string) => getHashtags(string).length <= HASHTAGS_QUANTITY;
-
 const getHashtagsToLowerCase = (string) => {
   const hashtags = getHashtags(string);
   return hashtags.map((element) => element.toLowerCase());
 };
 
+const getUniqueHashtags = (string) => {
+  const hashtags = getHashtagsToLowerCase(string);
+  const uniqueHashtags = new Set(hashtags);
+  return hashtags.length === uniqueHashtags.size;
+};
+
+const checkQuantity = (string) => getHashtags(string).length <= HASHTAGS_QUANTITY;
 
 const checkHashtagsSymbols = (string) => {
   const hashtags = getHashtags(string);
@@ -117,7 +116,6 @@ const pristine = new Pristine(form, {
 pristine.addValidator(commentsField, checkCommentsLength, `Not more then ${MAX_STRING_LENGTH} symbols`);
 pristine.addValidator(hashtagsField, getUniqueHashtags, 'Hashtags should be unique');
 pristine.addValidator(hashtagsField, checkQuantity, 'Not more then 5 hashtags');
-pristine.addValidator(hashtagsField, getHashtagsToLowerCase, '');
 pristine.addValidator(hashtagsField, checkHashtagsSymbols, 'Hashtag begins with "#" and consists of letters/numbers, not more then 20 symbols');
 
 

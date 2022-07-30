@@ -1,6 +1,6 @@
 import {ALERT_SHOW_TIME, TIME_OUT_DELAY} from './constants.js';
 
-const randInt = (min, max) => {
+const getRandInt = (min, max) => {
   if (min < 0 || max < 0 || max < min) {
     throw new Error('Incorrect value range');
   }
@@ -9,13 +9,11 @@ const randInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const getRandomArrayElement = (elements) => elements[randInt(0, elements.length - 1)];
-
 const getRandomUniqueElements = (arr) => {
   const newArray = arr.slice();
   const elements = [];
   for (let i = 0; i < arr.length; i++) {
-    const randomId = randInt(0, newArray.length - 1);
+    const randomId = getRandInt(0, newArray.length - 1);
     elements.push(newArray[randomId]);
     newArray.splice(randomId, 1);
   }
@@ -58,4 +56,4 @@ function onPopupEscKeydown(evt) {
   }
 }
 
-export {randInt, getRandomArrayElement, getRandomUniqueElements, showAlert, debounce, onPopupEscKeydown};
+export {getRandInt, getRandomUniqueElements, showAlert, debounce, onPopupEscKeydown};
